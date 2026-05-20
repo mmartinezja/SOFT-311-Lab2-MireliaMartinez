@@ -1,0 +1,6 @@
+pyproject.toml
+playwright_automation_base.egg-info/PKG-INFO
+playwright_automation_base.egg-info/SOURCES.txt
+playwright_automation_base.egg-info/dependency_links.txt
+playwright_automation_base.egg-info/requires.txt
+playwright_automation_base.egg-info/top_level.txt

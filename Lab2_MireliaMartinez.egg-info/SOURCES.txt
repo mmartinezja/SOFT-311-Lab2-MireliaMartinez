@@ -1,0 +1,6 @@
+pyproject.toml
+Lab2_MireliaMartinez.egg-info/PKG-INFO
+Lab2_MireliaMartinez.egg-info/SOURCES.txt
+Lab2_MireliaMartinez.egg-info/dependency_links.txt
+Lab2_MireliaMartinez.egg-info/requires.txt
+Lab2_MireliaMartinez.egg-info/top_level.txt
