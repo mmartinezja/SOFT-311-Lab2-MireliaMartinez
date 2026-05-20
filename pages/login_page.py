@@ -1,34 +1,29 @@
-import sys
-from pathlib import Path
+class LoginPage:
 
-# Allow running this test file directly: `python tests/login_test.py`
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+    def __init__(self, page):
 
-from playwright.sync_api import sync_playwright
-import time
+        self.page = page
 
+        self.signup_name_input = page.locator(
+            'input[data-qa="signup-name"]'
+        )
 
-def run() -> None:
-    with sync_playwright() as playwright:
-        browser = playwright.chromium.launch(headless=False)
-        page = browser.new_page()
-        login = LoginPage(page)
-        page.goto("https://www.automationexercise.com/login", wait_until="domcontentloaded")
-        
-        login.fill_signup_name("Felipe")
-        time.sleep(5)
-        
-        login.fill_email("felipe123123@example.com")
-        time.sleep(5)
-        
-        login.click_signup_button()
-        time.sleep(5)
-        
-        ## validar url
-        assert page.url == "https://www.automationexercise.com/signup", f"Expected URL to be 'https://www.automationexercise.com/signup' but got '{page.url}'"
-        time.sleep(10)
-        browser.close()
+        self.email_input = page.locator(
+            'input[data-qa="signup-email"]'
+        )
 
+        self.signup_button = page.locator(
+            'button[data-qa="signup-button"]'
+        )
 
-if __name__ == "__main__":
-    run()
+    def fill_signup_name(self, name):
+
+        self.signup_name_input.fill(name)
+
+    def fill_email(self, email):
+
+        self.email_input.fill(email)
+
+    def click_signup_button(self):
+
+        self.signup_button.click()
