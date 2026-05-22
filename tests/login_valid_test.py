@@ -49,8 +49,5 @@ def run():
 
         time.sleep(10)
 
-        browser.close()
-
-
 if __name__ == "__main__":
     run()
