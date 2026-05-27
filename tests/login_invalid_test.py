@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 from pages.login_page_td import LoginPageTD
 
 
-def run():
+def test_login_invalid():
 
     with sync_playwright() as playwright:
 
@@ -75,5 +75,3 @@ def run():
             browser.close()
 
 
-if __name__ == "__main__":
-    run()

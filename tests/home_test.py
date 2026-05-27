@@ -8,7 +8,7 @@ from playwright.sync_api import sync_playwright
 from pages.home_page import HomePage
 
 
-def run():
+def test_home():
 
     with sync_playwright() as playwright:
 
@@ -33,6 +33,3 @@ def run():
         
         browser.close()
 
-
-if __name__ == "__main__":
-    run()
