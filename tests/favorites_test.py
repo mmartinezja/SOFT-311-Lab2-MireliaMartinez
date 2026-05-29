@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.favorites_page import FavoritesPage
+from assertions import assert_with_screenshot
 
 
 def test_favorites():
@@ -34,11 +35,14 @@ def test_favorites():
 
             time.sleep(5)
 
-            # Assertion
-            assert page.locator(
-                '[data-testid="all-products-wishlist-button-filled"]'
-            ).is_visible(), (
-                "El producto no fue agregado a favoritos"
+            # Assertion con screenshot automático
+            assert_with_screenshot(
+                page,
+                condition=page.locator(
+                    '[data-testid="all-products-wishlist-button-filled"]'
+                ).is_visible(),
+                message="El producto no fue agregado a favoritos",
+                name="favorites_visible_assert"
             )
 
             print(
@@ -46,7 +50,8 @@ def test_favorites():
             )
 
             page.screenshot(
-                path="favorites_success.png"
+                path="artifacts/screenshots/favorites_success.png",
+                full_page=True
             )
 
             time.sleep(5)
@@ -54,7 +59,8 @@ def test_favorites():
         except Exception as error:
 
             page.screenshot(
-                path="favorites_error.png"
+                path="artifacts/screenshots/favorites_error.png",
+                full_page=True
             )
 
             print(
@@ -68,3 +74,5 @@ def test_favorites():
             browser.close()
 
 
+if __name__ == "__main__":
+    test_favorites()

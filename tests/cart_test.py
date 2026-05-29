@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.cart_page import CartPage
+from assertions import assert_with_screenshot
 
 
 def test_cart():
@@ -42,9 +43,12 @@ def test_cart():
 
             time.sleep(5)
 
-            # Assertion
-            assert cart.is_cart_visible(), (
-                "El carrito no se abrió correctamente"
+            # Assertion con screenshot automático
+            assert_with_screenshot(
+                page,
+                condition=cart.is_cart_visible(),
+                message="El carrito no se abrió correctamente",
+                name="cart_visible_assert"
             )
 
             print(
@@ -52,7 +56,8 @@ def test_cart():
             )
 
             page.screenshot(
-                path="cart_success.png"
+                path="artifacts/screenshots/cart_success.png",
+                full_page=True
             )
 
             time.sleep(5)
@@ -60,7 +65,8 @@ def test_cart():
         except Exception as error:
 
             page.screenshot(
-                path="cart_error.png"
+                path="artifacts/screenshots/cart_error.png",
+                full_page=True
             )
 
             print(
@@ -73,3 +79,6 @@ def test_cart():
 
             browser.close()
 
+
+if __name__ == "__main__":
+    test_cart()

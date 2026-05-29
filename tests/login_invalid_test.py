@@ -6,6 +6,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.login_page_td import LoginPageTD
+from assertions import assert_with_screenshot
 
 
 def test_login_invalid():
@@ -43,9 +44,12 @@ def test_login_invalid():
 
             time.sleep(5)
 
-            # Assertion
-            assert "login" in page.url.lower(), (
-                "El login inválido fue aceptado"
+            # Assertion con screenshot automático
+            assert_with_screenshot(
+                page,
+                condition="login" in page.url.lower(),
+                message="El login inválido fue aceptado",
+                name="login_invalid_assert"
             )
 
             print(
@@ -53,7 +57,8 @@ def test_login_invalid():
             )
 
             page.screenshot(
-                path="login_invalid_success.png"
+                path="artifacts/screenshots/login_invalid_success.png",
+                full_page=True
             )
 
             time.sleep(5)
@@ -61,7 +66,8 @@ def test_login_invalid():
         except Exception as error:
 
             page.screenshot(
-                path="login_invalid_error.png"
+                path="artifacts/screenshots/login_invalid_error.png",
+                full_page=True
             )
 
             print(
@@ -75,3 +81,5 @@ def test_login_invalid():
             browser.close()
 
 
+if __name__ == "__main__":
+    test_login_invalid()
