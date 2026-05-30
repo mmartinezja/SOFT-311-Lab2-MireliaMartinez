@@ -7,6 +7,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from playwright.sync_api import sync_playwright
 from pages.cart_page import CartPage
 from assertions import assert_with_screenshot
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_cart():
@@ -56,7 +59,9 @@ def test_cart():
             )
 
             page.screenshot(
-                path="artifacts/screenshots/cart_success.png",
+                path=screenshot_path(
+                    "cart_success.png"
+                ),
                 full_page=True
             )
 
@@ -65,7 +70,9 @@ def test_cart():
         except Exception as error:
 
             page.screenshot(
-                path="artifacts/screenshots/cart_error.png",
+                path=screenshot_path(
+                    "cart_error.png"
+                ),
                 full_page=True
             )
 

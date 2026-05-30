@@ -7,6 +7,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from playwright.sync_api import sync_playwright
 from pages.favorites_page import FavoritesPage
 from assertions import assert_with_screenshot
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_favorites():
@@ -50,7 +53,9 @@ def test_favorites():
             )
 
             page.screenshot(
-                path="artifacts/screenshots/favorites_success.png",
+                path=screenshot_path(
+                    "favorites_success.png"
+                ),
                 full_page=True
             )
 
@@ -59,7 +64,9 @@ def test_favorites():
         except Exception as error:
 
             page.screenshot(
-                path="artifacts/screenshots/favorites_error.png",
+                path=screenshot_path(
+                    "favorites_error.png"
+                ),
                 full_page=True
             )
 

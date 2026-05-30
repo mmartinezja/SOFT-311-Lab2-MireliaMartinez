@@ -7,6 +7,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from pages.home_page import HomePage
 from assertions import assert_with_screenshot
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_home() -> None:
@@ -38,12 +41,9 @@ def test_home() -> None:
         print("Home cargado correctamente")
 
         # Screenshot de evidencia exitosa
-        screenshots_dir = Path("artifacts/screenshots")
-        screenshots_dir.mkdir(parents=True, exist_ok=True)
-
         page.screenshot(
-            path=str(
-                screenshots_dir / "home_success.png"
+            path=screenshot_path(
+                "home_success.png"
             ),
             full_page=True
         )

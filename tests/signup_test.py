@@ -6,6 +6,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.signup_page import SignUpPage
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_signup():
@@ -60,7 +63,10 @@ def test_signup():
             )
 
             page.screenshot(
-                path="signup_success.png"
+                path=screenshot_path(
+                    "signup_success.png"
+                ),
+                full_page=True
             )
 
             time.sleep(5)
@@ -68,7 +74,10 @@ def test_signup():
         except Exception as error:
 
             page.screenshot(
-                path="signup_error.png"
+                path=screenshot_path(
+                    "signup_error.png"
+                ),
+                full_page=True
             )
 
             print(

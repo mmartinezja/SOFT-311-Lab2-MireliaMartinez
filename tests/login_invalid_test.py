@@ -7,6 +7,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from playwright.sync_api import sync_playwright
 from pages.login_page_td import LoginPageTD
 from assertions import assert_with_screenshot
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_login_invalid():
@@ -57,7 +60,9 @@ def test_login_invalid():
             )
 
             page.screenshot(
-                path="artifacts/screenshots/login_invalid_success.png",
+                path=screenshot_path(
+                    "login_invalid_success.png"
+                ),
                 full_page=True
             )
 
@@ -66,7 +71,9 @@ def test_login_invalid():
         except Exception as error:
 
             page.screenshot(
-                path="artifacts/screenshots/login_invalid_error.png",
+                path=screenshot_path(
+                    "login_invalid_error.png"
+                ),
                 full_page=True
             )
 

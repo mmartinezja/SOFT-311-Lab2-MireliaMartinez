@@ -6,6 +6,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.signup_page import SignUpPage
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_signup_invalid_email():
@@ -60,13 +63,19 @@ def test_signup_invalid_email():
             )
 
             page.screenshot(
-                path="signup_invalid_email_success.png"
+                path=screenshot_path(
+                    "signup_invalid_email_success.png"
+                ),
+                full_page=True
             )
 
         except Exception as error:
 
             page.screenshot(
-                path="signup_invalid_email_error.png"
+                path=screenshot_path(
+                    "signup_invalid_email_error.png"
+                ),
+                full_page=True
             )
 
             print(

@@ -6,6 +6,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.all_products_page import AllProductsPage
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_all_products():
@@ -42,7 +45,10 @@ def test_all_products():
             )
 
             page.screenshot(
-                path="all_products_success.png"
+                path=screenshot_path(
+                    "all_products_success.png"
+                ),
+                full_page=True
             )
 
             time.sleep(5)
@@ -50,7 +56,10 @@ def test_all_products():
         except Exception as error:
 
             page.screenshot(
-                path="all_products_error.png"
+                path=screenshot_path(
+                    "all_products_error.png"
+                ),
+                full_page=True
             )
 
             print(

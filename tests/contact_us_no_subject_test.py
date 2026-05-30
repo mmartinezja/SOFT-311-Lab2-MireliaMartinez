@@ -6,6 +6,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from playwright.sync_api import sync_playwright
 from pages.contact_page import ContactUsPage
+from utils.screenshot_helper import (
+    screenshot_path
+)
 
 
 def test_contact_us_no_subject():
@@ -64,13 +67,19 @@ def test_contact_us_no_subject():
             )
 
             page.screenshot(
-                path="contact_us_no_subject_success.png"
+                path=screenshot_path(
+                    "contact_us_no_subject_success.png"
+                ),
+                full_page=True
             )
 
         except Exception as error:
 
             page.screenshot(
-                path="contact_us_no_subject_error.png"
+                path=screenshot_path(
+                    "contact_us_no_subject_error.png"
+                ),
+                full_page=True
             )
 
             print(
