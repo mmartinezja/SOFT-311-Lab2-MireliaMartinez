@@ -6,10 +6,6 @@ QA Automation project developed using Python, Playwright and Pytest.
 
 The project automates functional test cases for the StoreDemo TestDino application using the Page Object Model (POM) design pattern.
 
-The framework includes automated assertions, screenshot evidence generation, and HTML reporting.
-
----
-
 ## Technologies
 
 * Python
@@ -18,123 +14,120 @@ The framework includes automated assertions, screenshot evidence generation, and
 * pytest-html
 * Page Object Model (POM)
 
----
+## Automated Test Cases
 
-## Automated Functional Test Cases
+### Positive Test Cases
 
 1. Home validation
-2. Valid login
-3. Invalid login
-4. Add product to cart
-5. Add product to favorites
+2. About Us navigation
+3. Contact Us form submission
+4. All Products page validation
+5. Valid login
+6. Sign Up
+7. Add product to cart
+8. Add product to favorites
 
----
+### Negative Test Cases
+
+1. Invalid login
+2. Contact Us without Subject
+3. Contact Us without Message
+4. Sign Up with invalid email
+5. Sign Up without password
 
 ## Project Structure
 
 ```text
 pages/
+│
 ├── home_page.py
+├── about_us_page.py
+├── contact_page.py
+├── all_products_page.py
 ├── login_page_td.py
+├── signup_page.py
 ├── cart_page.py
 └── favorites_page.py
 
 tests/
-├── assertions.py
+│
 ├── home_test.py
+├── about_us_test.py
+├── contact_us_test.py
+├── all_products_test.py
 ├── login_valid_test.py
 ├── login_invalid_test.py
+├── signup_test.py
+├── signup_invalid_email_test.py
+├── signup_no_password_test.py
 ├── cart_test.py
-└── favorites_test.py
-
-artifacts/
-└── screenshots/
+├── favorites_test.py
+├── contact_us_no_subject_test.py
+└── contact_us_no_message_test.py
 
 report.html
-requirements.txt
 README.md
 ```
 
----
-
 ## Features
 
-* Playwright browser automation
-* Page Object Model (POM)
-* Automated assertions
-* Automatic screenshot generation on failures
-* Success screenshots for test evidence
+* Functional test automation
+* Positive and negative test scenarios
+* Assertions and validations
+* Automatic screenshots
 * HTML report generation
-* Error handling and validation
+* Error handling
+* Playwright browser automation
+* Page Object Model architecture
 
----
+## Installation
 
-## Install Dependencies
+Install project dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-## Install Playwright Browsers
+Install Playwright browsers:
 
 ```bash
 playwright install
 ```
 
----
+## Running Tests
 
-## Run All Tests
+Run all tests:
 
 ```bash
-pytest -v
+pytest tests/ -v
 ```
 
----
+Run a specific test:
+
+```bash
+pytest tests/signup_test.py -v
+```
 
 ## Generate HTML Report
 
 ```bash
-pytest -v --html=report.html --self-contained-html
+pytest tests/ --html=report.html --self-contained-html
 ```
 
-The report will be generated in the project root:
+## Deliverables
 
-```text
-report.html
-```
-
----
-
-## Test Evidence
-
-Successful executions generate screenshots in:
-
-```text
-artifacts/screenshots/
-```
-
-Examples:
-
-```text
-home_success.png
-cart_success.png
-favorites_success.png
-login_success.png
-login_invalid_success.png
-```
-
-Assertion failures automatically generate timestamped screenshots for troubleshooting.
-
----
+* Automated functional test scripts
+* Positive and negative test cases
+* Execution screenshots
+* HTML report
+* Updated README
+* GitHub repository
 
 ## Results
 
-Current automated test suite:
+* Positive Test Cases: 8
+* Negative Test Cases: 5
+* Total Automated Test Cases: 13
 
-* Total Tests: 5
-* Passed: 5
-* Failed: 0
-
-All test cases execute successfully using Playwright and Pytest.
+```
+```
