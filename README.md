@@ -80,19 +80,6 @@ README.md
 * Playwright browser automation
 * Page Object Model architecture
 
-## Installation
-
-Install project dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
-Install Playwright browsers:
-
-```bash
-playwright install
-```
 
 ## Running Tests
 

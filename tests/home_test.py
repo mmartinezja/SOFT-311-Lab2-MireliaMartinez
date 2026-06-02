@@ -41,7 +41,6 @@ def test_home() -> None:
         print("Home cargado correctamente")
 
         page.wait_for_load_state("networkidle")
-        
         # Screenshot de evidencia exitosa
         page.screenshot(
             path=screenshot_path(
