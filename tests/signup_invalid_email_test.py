@@ -16,7 +16,7 @@ def test_signup_invalid_email():
     with sync_playwright() as playwright:
 
         browser = playwright.chromium.launch(
-            headless=False
+            headless=True
         )
 
         page = browser.new_page()

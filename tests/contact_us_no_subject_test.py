@@ -16,7 +16,7 @@ def test_contact_us_no_subject():
     with sync_playwright() as playwright:
 
         browser = playwright.chromium.launch(
-            headless=False
+            headless=True
         )
 
         page = browser.new_page()
