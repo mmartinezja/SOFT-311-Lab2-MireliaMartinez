@@ -28,11 +28,8 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Create venv and install dependencies
-        run: |
-          python -m venv .venv
-          echo "$GITHUB_WORKSPACE/.venv/bin" >> $GITHUB_PATH
-          .venv/bin/pip install pytest pytest-shard allure-pytest playwright
+      - name: Install dependencies
+        run: pip install pytest pytest-split allure-pytest playwright
 
       - uses: actions/setup-java@v4.7.1
         with:
@@ -43,10 +40,10 @@ jobs:
         run: npm install -g allure-commandline --save-dev
 
       - name: Install Playwright browsers
-        run: .venv/bin/playwright install chromium
+        run: playwright install chromium
 
       - name: Run tests (shard ${{ matrix.shard }} of 8)
-        run: .venv/bin/python -m pytest --shard=${{ matrix.shard }}/8 --alluredir=allure-assets
+        run: python -m pytest --splits=8 --group=${{ matrix.shard }} --alluredir=allure-assets
 
       - name: Generate Allure report
         run: allure generate allure-assets -c --single-file
