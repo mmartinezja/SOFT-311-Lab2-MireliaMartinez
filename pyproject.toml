@@ -9,6 +9,7 @@ dependencies = [
     "playwright>=1.54.0",
     "pytest>=8.0.0",
     "pytest-shard>=0.1.2",
+    "allure-pytest>=2.13.0",
 ]
 
 [build-system]

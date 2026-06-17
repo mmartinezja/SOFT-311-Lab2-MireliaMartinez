@@ -43,8 +43,7 @@ jobs:
         run: playwright install chromium          # replaces npx playwright install
 
       - name: Run tests (shard ${{ matrix.shard }} of 8)
-        run: pytest --shard=${{ matrix.shard }}/8   # replaces npx playwright test
-        # Note: requires pytest-shard plugin → add to requirements.txt
+        run: pytest --shard=${{ matrix.shard }}/8 --alluredir=allure-assets
 
       - name: Generate Allure report
         run: allure generate allure-assets -c --single-file
